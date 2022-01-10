@@ -18,7 +18,7 @@ export function Banner() {
   return (
     <Box
       bgImage={"/images/background.png"}
-      py={20}
+      py={isDesktopVersion ? 20 : 7}
       objectFit={"cover"}
       bgRepeat={"no-repeat"}
     >
