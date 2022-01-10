@@ -21,7 +21,7 @@ export const theme = extendTheme({
     },
     light: {
       white: "#FFFFFF",
-      heading: "F5F8FA",
+      heading: "#F5F8FA",
       info: "DADADA",
     },
   },
