@@ -27,7 +27,11 @@ export function Slides() {
         style={{ maxWidth: "inherit", height: "inherit" }}
       >
         <SwiperSlide>
-          <SlideItem title="Europa" text="O continente mais antigo" />
+          <SlideItem
+            image="europe.png"
+            title="Europa"
+            text="O continente mais antigo"
+          />
         </SwiperSlide>
         <SwiperSlide>
           <SlideItem title="América" text="O continente mais antigo" />

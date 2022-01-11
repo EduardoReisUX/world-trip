@@ -4,7 +4,7 @@ export function Title() {
   return (
     <Container maxW={"container.lg"} textAlign={"center"}>
       <Heading
-        fontSize={["20px", "20px", "20px", "36px"]}
+        fontSize={{ base: "20px", lg: "36px" }}
         fontWeight={"medium"}
         color={"dark.heading"}
       >

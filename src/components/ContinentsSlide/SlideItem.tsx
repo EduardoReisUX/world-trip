@@ -1,16 +1,17 @@
-import { Stack, Heading, Text, Link } from "@chakra-ui/react";
+import { Stack, Heading, Text, Image, Box } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 interface SlideItemProps {
+  image?: string;
   title: string;
   text: string;
 }
 
-export function SlideItem({ title, text }: SlideItemProps) {
+export function SlideItem({ image, title, text }: SlideItemProps) {
   return (
     <NextLink href={`/${title}`} passHref>
       <Stack
-        as="a"
+        position={"relative"}
         spacing={3}
         align={"center"}
         justify={"center"}
@@ -19,10 +20,22 @@ export function SlideItem({ title, text }: SlideItemProps) {
         w={"inherit"}
         h={"inherit"}
       >
+        {!!image && (
+          <Image
+            position={"absolute"}
+            top={0}
+            src={`images/${image}`}
+            objectFit={"cover"}
+            w={"inherit"}
+            h={"inherit"}
+            sx={{ filter: "brightness(0.75)" }}
+          />
+        )}
         <Heading
           fontSize={{ base: "1.5rem", lg: "2.5rem" }}
           fontWeight={"bold"}
           color={"light.heading"}
+          zIndex={1}
         >
           {title}
         </Heading>
@@ -30,6 +43,7 @@ export function SlideItem({ title, text }: SlideItemProps) {
           fontSize={{ base: "0.875rem", lg: "1.5rem" }}
           fontWeight={"bold"}
           color={"light.info"}
+          zIndex={1}
         >
           {text}
         </Text>
