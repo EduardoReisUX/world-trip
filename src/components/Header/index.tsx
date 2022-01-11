@@ -1,23 +1,24 @@
-import { Flex, Image, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Image, Link as ChakraLink } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 export function Header() {
-  const isDestkopVersion = useBreakpointValue({
-    base: false,
-    lg: true,
-  });
-
   return (
     <Flex
       alignItems={"center"}
       justifyContent={"center"}
       width={"100%"}
-      py={isDestkopVersion ? 8 : 4}
+      py={{ base: 4, lg: 8 }}
     >
-      <Image
-        src={"/images/logo.svg"}
-        alt="logo"
-        h={isDestkopVersion ? "46px" : "20px"}
-      />
+      <NextLink href={"/"} passHref>
+        <ChakraLink>
+          <Image
+            src={"/images/logo.svg"}
+            alt="logo"
+            h={{ base: "20px", lg: "46px" }}
+            px={4}
+          />
+        </ChakraLink>
+      </NextLink>
     </Flex>
   );
 }

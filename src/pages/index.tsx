@@ -4,7 +4,6 @@ import Head from "next/head";
 import { Banner } from "../components/Banner";
 import { ContinentsSlide } from "../components/ContinentsSlide";
 import { Divider } from "../components/Divider";
-import { Header } from "../components/Header";
 import { TravelTypes } from "../components/TravelTypes";
 
 const Home: NextPage = () => {
@@ -14,7 +13,6 @@ const Home: NextPage = () => {
         <title>World Trip | Home</title>
       </Head>
 
-      <Header />
       <Banner />
       <TravelTypes />
 
