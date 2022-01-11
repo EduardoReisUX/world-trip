@@ -18,9 +18,10 @@ export function Banner() {
   return (
     <Box
       bgImage={"/images/background.png"}
-      py={isDesktopVersion ? 20 : 7}
-      objectFit={"cover"}
+      bgSize={"cover"}
       bgRepeat={"no-repeat"}
+      pt={isDesktopVersion ? 20 : 7}
+      pb={isDesktopVersion ? 0 : 7}
     >
       <Container maxW={"container.lg"}>
         <Flex justifyContent={"space-between"}>
@@ -44,7 +45,10 @@ export function Banner() {
             </Text>
           </Stack>
           {isDesktopVersion && (
-            <Image src={"/images/airplane.svg"} transform={"rotate(-3deg)"} />
+            <Image
+              src={"/images/airplane.svg"}
+              transform={"translateY(32px)"}
+            />
           )}
         </Flex>
       </Container>
