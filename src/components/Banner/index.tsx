@@ -6,22 +6,16 @@ import {
   Image,
   Stack,
   Text,
-  useBreakpointValue,
 } from "@chakra-ui/react";
 
 export function Banner() {
-  const isDesktopVersion = useBreakpointValue({
-    base: false,
-    lg: true,
-  });
-
   return (
     <Box
       bgImage={"/images/background.png"}
       bgSize={"cover"}
       bgRepeat={"no-repeat"}
-      pt={isDesktopVersion ? 20 : 7}
-      pb={isDesktopVersion ? 0 : 7}
+      pt={{ base: 7, lg: 20 }}
+      pb={{ base: 7, lg: 0 }}
     >
       <Container maxW={"container.lg"}>
         <Flex justifyContent={"space-between"}>
@@ -39,17 +33,16 @@ export function Banner() {
               fontSize={["0.875rem", "1.25rem"]}
               fontWeight={"regular"}
               color={"light.info"}
-              width={isDesktopVersion ? "75%" : "100%"}
+              width={{ base: "100%", lg: "75%" }}
             >
               Chegou a hora de tirar do papel a viagem que você sempre sonhou.
             </Text>
           </Stack>
-          {isDesktopVersion && (
-            <Image
-              src={"/images/airplane.svg"}
-              transform={"translateY(32px)"}
-            />
-          )}
+          <Image
+            display={{ base: "none", lg: "block" }}
+            src={"/images/airplane.svg"}
+            transform={"translateY(32px)"}
+          />
         </Flex>
       </Container>
     </Box>

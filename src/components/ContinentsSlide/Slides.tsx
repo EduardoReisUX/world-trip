@@ -5,19 +5,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-import { Box, useBreakpointValue } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { SlideItem } from "./SlideItem";
 
 export function Slides() {
-  const isDesktopVersion = useBreakpointValue({
-    base: false,
-    lg: true,
-  });
-
   return (
     <Box
-      maxW={isDesktopVersion ? "1024px" : "100%"}
-      h={isDesktopVersion ? "450" : "250px"}
+      maxW={{ base: "100%", lg: "1024px" }}
+      h={{ base: "250px", lg: "450px" }}
       mt={"20px"}
       mb={"24px"}
       mx={"auto"}
@@ -32,39 +27,19 @@ export function Slides() {
         style={{ maxWidth: "inherit", height: "inherit" }}
       >
         <SwiperSlide>
-          <SlideItem
-            isDesktopVersion={isDesktopVersion}
-            title="Europa"
-            text="O continente mais antigo"
-          />
+          <SlideItem title="Europa" text="O continente mais antigo" />
         </SwiperSlide>
         <SwiperSlide>
-          <SlideItem
-            isDesktopVersion={isDesktopVersion}
-            title="América"
-            text="O continente mais antigo"
-          />
+          <SlideItem title="América" text="O continente mais antigo" />
         </SwiperSlide>
         <SwiperSlide>
-          <SlideItem
-            isDesktopVersion={isDesktopVersion}
-            title="Ásia"
-            text="O continente mais antigo"
-          />
+          <SlideItem title="Ásia" text="O continente mais antigo" />
         </SwiperSlide>
         <SwiperSlide>
-          <SlideItem
-            isDesktopVersion={isDesktopVersion}
-            title="África"
-            text="O continente mais antigo"
-          />
+          <SlideItem title="África" text="O continente mais antigo" />
         </SwiperSlide>
         <SwiperSlide>
-          <SlideItem
-            isDesktopVersion={isDesktopVersion}
-            title="Oceania"
-            text="O continente mais antigo"
-          />
+          <SlideItem title="Oceania" text="O continente mais antigo" />
         </SwiperSlide>
       </Swiper>
     </Box>

@@ -1,13 +1,12 @@
-import { Stack, Heading, Text, Link as ChakraLink } from "@chakra-ui/react";
+import { Stack, Heading, Text, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 interface SlideItemProps {
   title: string;
   text: string;
-  isDesktopVersion: boolean | undefined;
 }
 
-export function SlideItem({ title, text, isDesktopVersion }: SlideItemProps) {
+export function SlideItem({ title, text }: SlideItemProps) {
   return (
     <NextLink href={`/${title}`} passHref>
       <Stack
@@ -21,14 +20,14 @@ export function SlideItem({ title, text, isDesktopVersion }: SlideItemProps) {
         h={"inherit"}
       >
         <Heading
-          fontSize={isDesktopVersion ? "2.5rem" : "1.5rem"}
+          fontSize={{ base: "1.5rem", lg: "2.5rem" }}
           fontWeight={"bold"}
           color={"light.heading"}
         >
           {title}
         </Heading>
         <Text
-          fontSize={isDesktopVersion ? "1.5rem" : "0.875rem"}
+          fontSize={{ base: "0.875rem", lg: "1.5rem" }}
           fontWeight={"bold"}
           color={"light.info"}
         >
