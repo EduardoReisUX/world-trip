@@ -5,7 +5,6 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          {/* google fonts */}
           <link rel="preconnect" href="https://fonts.googleapis.com"></link>
           <link rel="preconnect" href="https://fonts.gstatic.com"></link>
           <link
@@ -13,8 +12,11 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           ></link>
 
-          {/* favicon */}
-          <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+          <link
+            rel="shortcut icon"
+            href="images/favicon.png"
+            type="image/png"
+          />
         </Head>
 
         <body>
