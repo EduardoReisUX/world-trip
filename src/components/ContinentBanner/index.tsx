@@ -12,6 +12,7 @@ export function ContinentBanner() {
       justifyContent={{ base: "center", lg: "center" }}
     >
       <Image
+        src="images/cities/london.png"
         position={"absolute"}
         w={"inherit"}
         h={"inherit"}

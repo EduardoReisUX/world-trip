@@ -17,11 +17,31 @@ export function Cities() {
         gap={{ base: 10 }}
         mb={4}
       >
-        {Array(12)
-          .fill(0)
-          .map((item, index) => (
-            <CityCard key={index} />
-          ))}
+        <CityCard
+          city="Londres"
+          country="Reino Unido"
+          cityImage="londres"
+          flag="reino-unido"
+        />
+        <CityCard
+          city="Paris"
+          country="França"
+          cityImage="paris"
+          flag="franca"
+        />
+        <CityCard city="Roma" country="Itália" cityImage="roma" flag="italia" />
+        <CityCard
+          city="Praga"
+          country="República Tcheca"
+          cityImage="praga"
+          flag="republica-tcheca"
+        />
+        <CityCard
+          city="Amsterdã"
+          country="Holanda"
+          cityImage="amsterda"
+          flag="holanda"
+        />
       </Grid>
     </>
   );
