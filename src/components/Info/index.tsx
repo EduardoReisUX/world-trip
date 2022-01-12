@@ -8,6 +8,7 @@ export function Info() {
       direction={{ base: "column", lg: "row" }}
       spacing={{ base: 4, lg: 16 }}
       align={"center"}
+      mb={{ base: 8, lg: 20 }}
     >
       <ContinentDescription />
 

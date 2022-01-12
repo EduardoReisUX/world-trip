@@ -11,7 +11,7 @@ import { SlideItem } from "./SlideItem";
 export function Slides() {
   return (
     <Box
-      maxW={{ base: "100%", lg: "1024px" }}
+      maxW={{ base: "100%", lg: "container.xl" }}
       h={{ base: "250px", lg: "450px" }}
       mt={"20px"}
       mb={"24px"}

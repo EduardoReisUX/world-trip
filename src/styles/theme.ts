@@ -26,6 +26,13 @@ export const theme = extendTheme({
     },
   },
 
+  sizes: {
+    container: {
+      lg: "1160px",
+      xl: "1240px",
+    },
+  },
+
   styles: {
     global: {
       body: {
