@@ -16,7 +16,7 @@ export function ContinentBanner() {
         w={"inherit"}
         h={"inherit"}
         objectFit={"cover"}
-        bgColor={"gray.900"}
+        bgColor={"gray.700"}
         sx={{ filter: "brightness(0.75)" }}
       />
       <Container
