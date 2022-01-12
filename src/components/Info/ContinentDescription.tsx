@@ -3,7 +3,7 @@ import { Text } from "@chakra-ui/react";
 export function ContinentDescription() {
   return (
     <Text
-      fontSize={"0.875rem"}
+      fontSize={{ base: "0.875rem", lg: "1.5rem" }}
       fontWeight={"regular"}
       color={"dark.heading"}
       textAlign={"justify"}

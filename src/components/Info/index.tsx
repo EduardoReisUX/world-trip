@@ -7,6 +7,7 @@ export function Info() {
     <Stack
       direction={{ base: "column", lg: "row" }}
       spacing={{ base: 4, lg: 16 }}
+      align={"center"}
     >
       <ContinentDescription />
 

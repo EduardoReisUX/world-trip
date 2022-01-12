@@ -8,14 +8,14 @@ interface InfoItemProps {
 export function InfoItem({ heading, text }: InfoItemProps) {
   return (
     <Heading
-      fontSize={"1.5rem"}
+      fontSize={{ base: "1.5rem", lg: "3rem" }}
       fontWeight={"semibold"}
       color={"highlight.100"}
     >
       {heading}
       <br />
       <Text
-        fontSize={"1.125rem"}
+        fontSize={{ base: "1.125rem", lg: "1.5rem" }}
         fontWeight={{ base: "normal", lg: "semibold" }}
         color={"dark.heading"}
       >
