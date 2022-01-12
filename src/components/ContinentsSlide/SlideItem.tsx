@@ -19,6 +19,7 @@ export function SlideItem({ image, title, text }: SlideItemProps) {
         bgColor={"purple.900"}
         w={"inherit"}
         h={"inherit"}
+        _hover={{ cursor: "pointer" }}
       >
         {!!image && (
           <Image

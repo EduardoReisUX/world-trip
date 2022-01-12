@@ -1,8 +1,9 @@
-import { Container, Flex, Heading } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import type { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-
-import { Header } from "./../components/Header";
+import { Cities } from "../components/Cities";
+import { ContinentBanner } from "../components/ContinentBanner";
+import { Info } from "../components/Info";
 
 interface ContinentProps {
   params: {
@@ -17,11 +18,11 @@ function Continent({ params }: ContinentProps) {
         <title>World Trip | {params.continent}</title>
       </Head>
 
-      <Flex direction={"column"} align={"center"} justify={"center"}>
-        <Container>
-          <Heading>{params.continent.toUpperCase()}</Heading>
-        </Container>
-      </Flex>
+      <ContinentBanner />
+      <Container maxW={"container.lg"}>
+        <Info />
+        <Cities />
+      </Container>
     </>
   );
 }
