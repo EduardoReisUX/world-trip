@@ -1,9 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import { Navigation, Pagination, A11y, Autoplay } from "swiper";
 
 import { Box } from "@chakra-ui/react";
 import { SlideItem } from "./SlideItem";
@@ -18,12 +14,15 @@ export function Slides() {
       mx={"auto"}
     >
       <Swiper
-        modules={[Navigation, Pagination, A11y]}
+        modules={[Navigation, Pagination, Autoplay, A11y]}
         direction="horizontal"
         spaceBetween={16}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
+        autoplay={{
+          delay: 4500,
+        }}
         style={{ maxWidth: "inherit", height: "inherit" }}
       >
         <SwiperSlide>
@@ -34,16 +33,32 @@ export function Slides() {
           />
         </SwiperSlide>
         <SwiperSlide>
-          <SlideItem title="América" text="O continente mais antigo" />
+          <SlideItem
+            title="América"
+            text='Considerada como "Novo Mundo"'
+            image="europe.png"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <SlideItem title="Ásia" text="O continente mais antigo" />
+          <SlideItem
+            title="Ásia"
+            text="O maior dos continentes, tanto em área como em população"
+            image="europe.png"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <SlideItem title="África" text="O continente mais antigo" />
+          <SlideItem
+            title="África"
+            text="O terceiro continente mais extenso"
+            image="europe.png"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <SlideItem title="Oceania" text="O continente mais antigo" />
+          <SlideItem
+            title="Oceania"
+            text='Conhecida como "Novíssimo Mundo"'
+            image="europe.png"
+          />
         </SwiperSlide>
       </Swiper>
     </Box>

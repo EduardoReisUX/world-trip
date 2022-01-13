@@ -1,4 +1,4 @@
-import { Stack, Heading, Text, Image, Box } from "@chakra-ui/react";
+import { Stack, Heading, Text, Image } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 interface SlideItemProps {

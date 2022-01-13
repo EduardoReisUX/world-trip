@@ -17,26 +17,25 @@ export function Header() {
   return (
     <Box width={"100%"} py={{ base: 4, lg: 8 }}>
       <Container
-        display={"flex"}
         maxW={"container.lg"}
+        display={"grid"}
+        gridTemplateColumns={"repeat(3, 1fr)"}
         alignItems={"center"}
-        justifyContent={"space-between"}
       >
-        <NextLink href={"/"} passHref>
-          <ChakraLink>
-            <ChevronLeftIcon
-              w={{ base: 4, lg: 8 }}
-              h={{ base: 4, lg: 8 }}
-              color={"dark.heading"}
-              visibility={
-                route.pathname !== "/[continent]" ? "hidden" : "visible"
-              }
-            />
-          </ChakraLink>
-        </NextLink>
+        {route.pathname === "/[continent]" && (
+          <NextLink href={"/"} passHref>
+            <ChakraLink w={{ base: 4, lg: 8 }} h={{ base: 4, lg: 8 }}>
+              <ChevronLeftIcon
+                w={"inherit"}
+                h={"inherit"}
+                color={"dark.heading"}
+              />
+            </ChakraLink>
+          </NextLink>
+        )}
 
         <NextLink href={"/"} passHref>
-          <ChakraLink>
+          <ChakraLink justifySelf={"center"} gridColumn={2}>
             <Image
               src={"/images/logo.svg"}
               alt="logo"
@@ -45,12 +44,6 @@ export function Header() {
             />
           </ChakraLink>
         </NextLink>
-
-        <ChevronLeftIcon
-          w={{ base: 4, lg: 8 }}
-          h={{ base: 4, lg: 8 }}
-          visibility={"hidden"}
-        />
       </Container>
     </Box>
   );
