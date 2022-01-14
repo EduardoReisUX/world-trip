@@ -1,30 +1,32 @@
-import { Grid, Heading } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { Flex, Grid, Heading, Spinner } from "@chakra-ui/react";
+import { useQuery } from "react-query";
 import { CityCard } from "./CityCard";
 
 interface CitiesProps {
   continent: string;
 }
 
-type CitiesData = {
-  city: "Londres";
-  country: "Reino Unido";
-  cityImage: "londres";
-  flag: "reino-unido";
-};
-
 export function Cities({ continent }: CitiesProps) {
-  let [cities, setCities] = useState<CitiesData[]>([]);
+  const { data, isLoading, error } = useQuery("cities", async () => {
+    const response = await fetch(`http://localhost:3000/api/continents/Europa`);
+    const data = await response.json();
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/api/continents/${continent}`)
-      .then((res) => res.json())
-      .then((json) => {
-        setCities(json.cities);
-      });
+    const cities = data.cities.map(
+      (cityItem: {
+        city: string;
+        country: string;
+        cityImage: string;
+        flag: string;
+      }) => ({
+        city: cityItem.city,
+        country: cityItem.country,
+        cityImage: cityItem.cityImage,
+        flag: cityItem.flag,
+      })
+    );
 
-    console.log(cities);
-  }, []);
+    return cities;
+  });
 
   return (
     <>
@@ -36,21 +38,49 @@ export function Cities({ continent }: CitiesProps) {
       >
         Cidades +100
       </Heading>
-      <Grid
-        templateColumns={"repeat(auto-fit, minmax(250px, 1fr))"}
-        gap={{ base: 10 }}
-        mb={4}
-      >
-        {cities.map(({ city, country, cityImage, flag }, index) => (
-          <CityCard
-            key={index}
-            city={city}
-            country={country}
-            cityImage={cityImage}
-            flag={flag}
-          />
-        ))}
-      </Grid>
+
+      {isLoading ? (
+        <Flex justify={"center"}>
+          <Spinner size={"xl"} thickness="4px" color="highlight.100" />
+        </Flex>
+      ) : error ? (
+        <Flex justify={"center"}>
+          <Heading
+            fontSize={{ base: "1.25rem", lg: "2rem" }}
+            fontWeight={"medium"}
+            color={"dark.info"}
+            mb={{ base: 5, lg: 10 }}
+          >
+            Falha ao obter dados das cidades. 😢
+          </Heading>
+        </Flex>
+      ) : (
+        <Grid
+          templateColumns={"repeat(auto-fit, minmax(250px, 1fr))"}
+          gap={{ base: 10 }}
+          mb={4}
+        >
+          {data.map(
+            (
+              cityItem: {
+                city: string;
+                country: string;
+                cityImage: string;
+                flag: string;
+              },
+              index: number
+            ) => (
+              <CityCard
+                key={index}
+                city={cityItem.city}
+                country={cityItem.country}
+                cityImage={cityItem.cityImage}
+                flag={cityItem.flag}
+              />
+            )
+          )}
+        </Grid>
+      )}
     </>
   );
 }
