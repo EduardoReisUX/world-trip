@@ -5,8 +5,14 @@ import { Box } from "@chakra-ui/react";
 import { SlideItem } from "./SlideItem";
 import { useEffect, useState } from "react";
 
+type ContinentsData = {
+  image: string;
+  title: string;
+  text: string;
+};
+
 export function Slides() {
-  let [continents, setContinents] = useState([]);
+  let [continents, setContinents] = useState<ContinentsData[]>([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/continents")
@@ -38,41 +44,11 @@ export function Slides() {
         }}
         style={{ maxWidth: "inherit", height: "inherit" }}
       >
-        <SwiperSlide>
-          <SlideItem
-            image="europe.png"
-            title="Europa"
-            text="O continente mais antigo"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SlideItem
-            title="América"
-            text='Considerada como "Novo Mundo"'
-            image="europe.png"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SlideItem
-            title="Ásia"
-            text="O maior dos continentes, tanto em área como em população"
-            image="europe.png"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SlideItem
-            title="África"
-            text="O terceiro continente mais extenso"
-            image="europe.png"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SlideItem
-            title="Oceania"
-            text='Conhecida como "Novíssimo Mundo"'
-            image="europe.png"
-          />
-        </SwiperSlide>
+        {continents.map(({ image, text, title }, index) => (
+          <SwiperSlide key={index}>
+            <SlideItem image={image} title={title} text={text} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Box>
   );

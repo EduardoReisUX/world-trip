@@ -6,8 +6,15 @@ interface CitiesProps {
   continent: string;
 }
 
+type CitiesData = {
+  city: "Londres";
+  country: "Reino Unido";
+  cityImage: "londres";
+  flag: "reino-unido";
+};
+
 export function Cities({ continent }: CitiesProps) {
-  let [cities, setCities] = useState([]);
+  let [cities, setCities] = useState<CitiesData[]>([]);
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/continents/${continent}`)
@@ -34,32 +41,15 @@ export function Cities({ continent }: CitiesProps) {
         gap={{ base: 10 }}
         mb={4}
       >
-        {/* cities.map() */}
-        <CityCard
-          city="Londres"
-          country="Reino Unido"
-          cityImage="londres"
-          flag="reino-unido"
-        />
-        <CityCard
-          city="Paris"
-          country="França"
-          cityImage="paris"
-          flag="franca"
-        />
-        <CityCard city="Roma" country="Itália" cityImage="roma" flag="italia" />
-        <CityCard
-          city="Praga"
-          country="República Tcheca"
-          cityImage="praga"
-          flag="republica-tcheca"
-        />
-        <CityCard
-          city="Amsterdã"
-          country="Holanda"
-          cityImage="amsterda"
-          flag="holanda"
-        />
+        {cities.map(({ city, country, cityImage, flag }, index) => (
+          <CityCard
+            key={index}
+            city={city}
+            country={country}
+            cityImage={cityImage}
+            flag={flag}
+          />
+        ))}
       </Grid>
     </>
   );
