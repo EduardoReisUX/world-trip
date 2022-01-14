@@ -10,6 +10,11 @@ import "swiper/css/scrollbar";
 import "../styles/slider.css";
 
 import { Header } from "../components/Header";
+import { makeServer } from "../services/mirage";
+
+if (process.env.NODE_ENV === "development") {
+  makeServer();
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

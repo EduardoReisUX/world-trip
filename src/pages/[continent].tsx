@@ -21,7 +21,7 @@ function Continent({ params }: ContinentProps) {
       <ContinentBanner />
       <Container maxW={"container.lg"}>
         <Info />
-        <Cities />
+        <Cities continent={params.continent} />
       </Container>
     </>
   );
@@ -30,8 +30,6 @@ function Continent({ params }: ContinentProps) {
 export async function getServerSideProps({
   params,
 }: GetServerSidePropsContext) {
-  console.log(params);
-
   return {
     props: {
       params,

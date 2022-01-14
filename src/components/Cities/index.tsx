@@ -1,7 +1,24 @@
 import { Grid, Heading } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
 import { CityCard } from "./CityCard";
 
-export function Cities() {
+interface CitiesProps {
+  continent: string;
+}
+
+export function Cities({ continent }: CitiesProps) {
+  let [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/continents/${continent}`)
+      .then((res) => res.json())
+      .then((json) => {
+        setCities(json.cities);
+      });
+
+    console.log(cities);
+  }, []);
+
   return (
     <>
       <Heading
@@ -17,6 +34,7 @@ export function Cities() {
         gap={{ base: 10 }}
         mb={4}
       >
+        {/* cities.map() */}
         <CityCard
           city="Londres"
           country="Reino Unido"
