@@ -1,34 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  <img src="github/logo.svg" alt="logo" width="200px"></img>
+</h1>
 
-## Getting Started
+<p align="center">
+  <a href="#ℹ-descrição">Descrição</a> •
+  <a href="#-tecnologias">Tecnologias</a> •
+  <a href="#-pré-requisitos">Pré-requisitos</a> •
+  <a href="#-como-usar">Como usar</a> •
+  <a href="#-espiadinha">Espiadinha</a>
+</p>
 
-First, run the development server:
+<p align="center">
+  <img src="github/macbook.png" alt="Projeto no desktop" width="100%"></img>
+</p>
+
+## ℹ Descrição
+
+Projeto desenvolvido como desafio complementar do capítulo 4 do Ignite. 👨‍🚀🚀
+
+O desafio consistia de dois objetivos principais: (1) desenvolver toda a interface da aplicação e (2) a responsividade das páginas para mobile, utilizando o [_Chakra UI_](https://chakra-ui.com/) como base. Um ponto muito importante desse desafio é a implementação da interface a partir de um [layout do _Figma_](https://www.figma.com/file/HO5CTDie3qpcKoO74gqhyR/Desafio-1-M%C3%B3dulo-4-ReactJS), como se tivesse recebido isso das mãos de um designer. Ademais, foi implementado outras funcionalidades adicionais como:
+
+- Fake API com Mirage;
+- Fetch e cache dos dados do servidor com React Query; e
+- Feedback mostrando se os dados estão carregando ou se houve erro.
+
+## ⚒ Tecnologias
+
+- [**React**](https://pt-br.reactjs.org)
+- [**Typescript**](https://www.typescriptlang.org)
+- [**Next.js**](https://nextjs.org)
+- [**Chakra UI**](https://chakra-ui.com/)
+- [**Swiper**](https://swiperjs.com/)
+- [**MirageJS**](https://miragejs.com/)
+- [**React Query**](https://react-query.tanstack.com/)
+
+## ⚙ Pré-requisitos
+
+- [Git](https://git-scm.com)
+- [Yarn](https://yarnpkg.com)
+- Editor de código.
+
+## 🖥 Como usar
+
+**Clone o projeto e acesse a pasta**
 
 ```bash
-npm run dev
-# or
-yarn dev
+$ git clone https://github.com/EduardoReisUX/world-trip.git && cd world-trip
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Siga os passos seguintes**
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+# Instale as dependências
+$ yarn
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Rode a aplicação
+$ yarn dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 👀 Espiadinha
 
-## Learn More
+<p align="center">
+<img src="github/mobile-home.png" alt="Projeto em dispositivo mobile - Home" height="400px"></img>
+<img src="github/mobile-continent.png" alt="Projeto em dispositivo mobile - Continente" height="400px"></img>
+</p>
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="center">Feito com 💜 por <a href="https://github.com/EduardoReisUX">Eduardo dos Reis</a></p>
