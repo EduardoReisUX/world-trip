@@ -1,26 +1,39 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper";
 
-import { Box, Flex, Spinner } from "@chakra-ui/react";
+import { Box, Button, Flex, Spinner } from "@chakra-ui/react";
 import { SlideItem } from "./SlideItem";
 
 import { useQuery } from "react-query";
 
+interface ContinentsData {
+  continents: {
+    image: string;
+    title: string;
+    text: string;
+  }[];
+}
+
 export function Slides() {
-  const { data, isLoading, error } = useQuery("continents", async () => {
-    const response = await fetch("http://localhost:3000/api/continents");
-    const data = await response.json();
+  const { data, isLoading, error, refetch } = useQuery(
+    "continents",
+    async () => {
+      const response = await fetch("http://localhost:3000/api/continents");
+      const data: ContinentsData = await response.json();
 
-    const continents = data.continents.map(
-      (continent: { image: string; title: string; text: string }) => ({
-        image: continent.image,
-        title: continent.title,
-        text: continent.text,
-      })
-    );
+      const continents = data.continents.map(({ image, text, title }) => ({
+        image,
+        title,
+        text,
+      }));
 
-    return continents;
-  });
+      return continents;
+    },
+    {
+      refetchOnWindowFocus: false,
+      retry: 1,
+    }
+  );
 
   return (
     <Box
@@ -35,7 +48,18 @@ export function Slides() {
           <Spinner size={"xl"} thickness="4px" color="highlight.100" />
         </Flex>
       ) : error ? (
-        <Flex justify={"center"}>Falha ao obter dados dos continentes. 😢</Flex>
+        <Flex direction={"column"} align={"center"} justify={"center"}>
+          Falha ao obter dados dos continentes. 😢
+          <Button
+            mt={4}
+            bg={"highlight.50"}
+            color={"dark.heading"}
+            _hover={{ bg: "highlight.100", color: "light.heading" }}
+            onClick={() => refetch()}
+          >
+            Tentar novamente
+          </Button>
+        </Flex>
       ) : (
         <Swiper
           modules={[Navigation, Pagination, Autoplay, A11y]}
@@ -49,20 +73,11 @@ export function Slides() {
           }}
           style={{ maxWidth: "inherit", height: "inherit" }}
         >
-          {data.map(
-            (
-              continent: { image: string; title: string; text: string },
-              index: number
-            ) => (
-              <SwiperSlide key={index}>
-                <SlideItem
-                  image={continent?.image}
-                  title={continent?.title}
-                  text={continent?.text}
-                />
-              </SwiperSlide>
-            )
-          )}
+          {data?.map(({ image, title, text }, index: number) => (
+            <SwiperSlide key={index + image + title + text}>
+              <SlideItem image={image} title={title} text={text} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       )}
     </Box>
