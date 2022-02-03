@@ -1,5 +1,7 @@
 <h1 align="center">
-  <img src="github/logo.svg" alt="logo" width="200px"></img>
+  <a href="https://worldtrip-rust.vercel.app" title="Visitar site" target="_blank">
+    <img src="github/logo.svg" alt="logo" width="200px"></img>
+  </a>
 </h1>
 
 <p align="center">
@@ -12,6 +14,7 @@
 
 <p align="center">
   <img src="github/macbook.png" alt="Projeto no desktop" width="100%"></img>
+  <a href="https://worldtrip-rust.vercel.app" title="Visitar site" target="_blank">Demonstração</a>
 </p>
 
 ## ℹ Descrição
@@ -68,3 +71,4 @@ $ yarn dev
 ---
 
 <p align="center">Feito com 💜 por <a href="https://github.com/EduardoReisUX">Eduardo dos Reis</a></p>
+<p align="center">Deployed by ▲ Vercel</p>
