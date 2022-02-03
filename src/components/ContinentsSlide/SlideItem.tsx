@@ -26,6 +26,7 @@ export function SlideItem({ image, title, text }: SlideItemProps) {
             position={"absolute"}
             top={0}
             src={`images/${image}`}
+            alt={`Imagem de ${title}`}
             objectFit={"cover"}
             w={"inherit"}
             h={"inherit"}

@@ -13,6 +13,7 @@ export function ContinentBanner() {
     >
       <Image
         src="images/cities/london.png"
+        alt="Londres"
         position={"absolute"}
         w={"inherit"}
         h={"inherit"}

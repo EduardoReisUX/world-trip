@@ -41,6 +41,7 @@ export function Banner() {
           <Image
             display={{ base: "none", lg: "block" }}
             src={"/images/airplane.svg"}
+            alt=""
             transform={"translateY(32px)"}
           />
         </Flex>
