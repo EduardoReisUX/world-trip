@@ -1,32 +1,43 @@
-import { Flex, Grid, Heading, Spinner } from "@chakra-ui/react";
+import { Button, Flex, Grid, Heading, Spinner } from "@chakra-ui/react";
 import { useQuery } from "react-query";
 import { CityCard } from "./CityCard";
+
+interface CitiesData {
+  cities: {
+    city: string;
+    country: string;
+    cityImage: string;
+    flag: string;
+  }[];
+}
 
 interface CitiesProps {
   continent: string;
 }
 
 export function Cities({ continent }: CitiesProps) {
-  const { data, isLoading, error } = useQuery("cities", async () => {
-    const response = await fetch(`http://localhost:3000/api/continents/Europa`);
-    const data = await response.json();
+  const { data, isLoading, error, refetch } = useQuery(
+    "cities",
+    async () => {
+      const response = await fetch(
+        `http://localhost:3000/api/continents/Europa`
+      );
+      const data: CitiesData = await response.json();
 
-    const cities = data.cities.map(
-      (cityItem: {
-        city: string;
-        country: string;
-        cityImage: string;
-        flag: string;
-      }) => ({
-        city: cityItem.city,
-        country: cityItem.country,
-        cityImage: cityItem.cityImage,
-        flag: cityItem.flag,
-      })
-    );
+      const cities = data.cities.map(({ city, country, cityImage, flag }) => ({
+        city,
+        country,
+        cityImage,
+        flag,
+      }));
 
-    return cities;
-  });
+      return cities;
+    },
+    {
+      refetchOnWindowFocus: false,
+      retry: 1,
+    }
+  );
 
   return (
     <>
@@ -44,7 +55,7 @@ export function Cities({ continent }: CitiesProps) {
           <Spinner size={"xl"} thickness="4px" color="highlight.100" />
         </Flex>
       ) : error ? (
-        <Flex justify={"center"}>
+        <Flex direction={"column"} align={"center"} justify={"center"}>
           <Heading
             fontSize={{ base: "1.25rem", lg: "2rem" }}
             fontWeight={"medium"}
@@ -53,6 +64,15 @@ export function Cities({ continent }: CitiesProps) {
           >
             Falha ao obter dados das cidades. 😢
           </Heading>
+          <Button
+            mt={4}
+            bg={"highlight.50"}
+            color={"dark.heading"}
+            _hover={{ bg: "highlight.100", color: "light.heading" }}
+            onClick={() => refetch()}
+          >
+            Tentar novamente
+          </Button>
         </Flex>
       ) : (
         <Grid
@@ -60,25 +80,15 @@ export function Cities({ continent }: CitiesProps) {
           gap={{ base: 10 }}
           mb={4}
         >
-          {data.map(
-            (
-              cityItem: {
-                city: string;
-                country: string;
-                cityImage: string;
-                flag: string;
-              },
-              index: number
-            ) => (
-              <CityCard
-                key={index}
-                city={cityItem.city}
-                country={cityItem.country}
-                cityImage={cityItem.cityImage}
-                flag={cityItem.flag}
-              />
-            )
-          )}
+          {data?.map(({ city, country, cityImage, flag }, index: number) => (
+            <CityCard
+              key={index + country + city + cityImage + flag}
+              city={city}
+              country={country}
+              cityImage={cityImage}
+              flag={flag}
+            />
+          ))}
         </Grid>
       )}
     </>

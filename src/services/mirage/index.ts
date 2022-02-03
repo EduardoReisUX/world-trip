@@ -17,6 +17,7 @@ export function makeServer() {
       this.timing = 750;
 
       // The Slides components fetch this
+      /* 
       this.get("/continents", () => ({
         continents: [
           {
@@ -46,9 +47,11 @@ export function makeServer() {
           },
         ],
       }));
+      */
 
       // The [continent] page fetch this and SlideItem
       // recieves it as props
+      /* 
       this.get("/continents/Europa", () => ({
         cities: [
           {
@@ -83,6 +86,7 @@ export function makeServer() {
           },
         ],
       }));
+      */
 
       this.namespace = "";
       this.passthrough();
