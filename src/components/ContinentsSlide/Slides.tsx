@@ -18,7 +18,9 @@ export function Slides() {
   const { data, isLoading, error, refetch } = useQuery(
     "continents",
     async () => {
-      const response = await fetch("http://localhost:3000/api/continents");
+      const response = await fetch(
+        "https://worldtrip-rust.vercel.app/api/continents"
+      );
       const data: ContinentsData = await response.json();
 
       const continents = data.continents.map(({ image, text, title }) => ({

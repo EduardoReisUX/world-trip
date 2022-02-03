@@ -20,7 +20,7 @@ export function Cities({ continent }: CitiesProps) {
     "cities",
     async () => {
       const response = await fetch(
-        `http://localhost:3000/api/continents/Europa`
+        `https://worldtrip-rust.vercel.app/api/continents/Europa`
       );
       const data: CitiesData = await response.json();
 
